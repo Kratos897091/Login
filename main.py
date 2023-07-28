@@ -49,7 +49,7 @@ def signin():
 
         if user and user['password'] == password:
             token = jwt.encode({'email': email}, 'Gautam', algorithm='HS256')
-            return jsonify({'token': token})
+            return jsonify({'email': email,'token': token})
         else:
             return jsonify({'message': 'User not found or incorrect password'})
 
