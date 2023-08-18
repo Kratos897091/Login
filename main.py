@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request,Bcrypt
+from flask import Flask, jsonify, request
 from pymongo import MongoClient
 from flask_bcrypt import Bcrypt
 import jwt
