@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from pymongo import MongoClient
+from flask_bcrypt import Bcrypt
 import jwt
 
 app = Flask(__name__)
@@ -17,11 +18,11 @@ def sign():
         username = data['username']
         password = data['password']
         email = data['email']
-
+        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
         user = {
             'name': name,
             'username': username,
-            'password': password,
+            'password': hashed_password,
             'email': email
         }
         existing = collection.find_one({'email': email})
