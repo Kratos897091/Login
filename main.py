@@ -49,7 +49,7 @@ def signin():
 
         user = collection.find_one({'email': email})
 
-        if user and user['password'] == password:
+       if user and bcrypt.check_password_hash(user['password'], password):
             token = jwt.encode({'email': email}, 'Gautam', algorithm='HS256')
             return jsonify({'email': email,'token': token})
         else:
