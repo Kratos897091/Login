@@ -1,10 +1,12 @@
 from flask import Flask, jsonify, request
 from pymongo import MongoClient
 from flask_bcrypt import Bcrypt
+import os
 import jwt
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
+secret_key = os.urandom(24)
 client = MongoClient(
     "mongodb+srv://Jenn:Janki6121@cluster0.vqk5j27.mongodb.net")
 db = client['userData']
@@ -50,7 +52,7 @@ def signin():
         user = collection.find_one({'email': email})
 
        if user and bcrypt.check_password_hash(user['password'], password):
-            token = jwt.encode({'email': email}, 'Gautam', algorithm='HS256')
+            token = jwt.encode({'email': email}, secret_key, algorithm='HS256')
             return jsonify({'email': email,'token': token})
         else:
             return jsonify({'message': 'User not found or incorrect password'})
