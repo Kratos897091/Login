@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request,Bcrypt
 from pymongo import MongoClient
+from flask_bcrypt import Bcrypt
 import jwt
 
 app = Flask(__name__)
