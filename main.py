@@ -4,6 +4,7 @@ from flask_bcrypt import Bcrypt
 import jwt
 
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 client = MongoClient(
     "mongodb+srv://Jenn:Janki6121@cluster0.vqk5j27.mongodb.net")
 db = client['userData']
