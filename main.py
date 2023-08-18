@@ -40,7 +40,7 @@ def sign():
         return jsonify({'error': str(e)}), 500
 
 
-@app.route("/signin", methods=['POST'])
+@app.route("/signin", methods=['GET'])
 def signin():
     try:
         data = request.json
@@ -79,7 +79,7 @@ def update():
         return jsonify({'error': str(e)}), 500
 
 
-@app.route('/delete', methods=['POST'])
+@app.route('/delete', methods=['DELETE'])
 def delete():
     try:
         data = request.json
