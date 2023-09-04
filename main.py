@@ -39,6 +39,7 @@ def sign():
             return jsonify({'message': 'User created successfully'})
 
     except Exception as e:
+        print(e)
         return jsonify({'error': str(e)}), 500
 
 
