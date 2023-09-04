@@ -32,10 +32,10 @@ def sign():
         existingusername = collection.find_one({'username': username})
         if existing:
             print("Existing")
-            return jsonify({'email': email, 'message': "Already registered"})
+            return jsonify({ 'message': "Already registered"})
         elif existingusername:
             print("Existing")
-            return jsonify({'username': username, 'message': "Username not available"})
+            return jsonify({'message': "Username not available"})
         else:
             print("success")
             collection.insert_one(user)
