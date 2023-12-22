@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from pymongo import MongoClient
 from flask_bcrypt import Bcrypt
+
 import os
 import jwt
 
@@ -46,7 +47,7 @@ def sign():
         return jsonify({'error': str(e)}), 500
 
 
-@app.route("/signin", methods=['GET'])
+@app.route("/signin", methods=['POST'])
 def signin():
     try:
         data = request.json
